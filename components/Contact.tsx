@@ -39,16 +39,17 @@ export default function Contact() {
           className="flex justify-center items-center gap-8 md:gap-12"
         >
           {socialLinks.map((link, index) => (
-            <a
+            <motion.a
               key={index}
               href={link.href}
+              whileTap={{ scale: 0.9 }}
               className={`text-slate-500 transition-all duration-300 transform hover:scale-125 ${link.color}`}
               aria-label={link.name}
               target={link.target}
               rel="noopener noreferrer"
             >
               <link.icon size={40} />
-            </a>
+            </motion.a>
           ))}
         </motion.div>
 

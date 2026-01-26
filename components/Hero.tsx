@@ -106,61 +106,61 @@ export default function Hero() {
         </div>
 
         {/* Visual Element with 3D Tilt Effect */}
-        <div className="relative h-[400px] md:h-[600px] w-full hidden md:flex items-center justify-center perspective-1000">
+        <div className="relative h-[300px] md:h-[600px] w-full flex items-center justify-center perspective-1000 mt-10 md:mt-0">
           <motion.div
             style={{ 
               rotateX: rotateX,
               rotateY: rotateY,
               transformStyle: "preserve-3d"
             }}
-            className="relative w-full max-w-lg aspect-square"
+            className="relative w-full max-w-lg aspect-square scale-75 md:scale-100"
           >
             {/* Center Core */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full blur-2xl opacity-40 animate-pulse" />
             
-            {/* Floating Cards */}
+            {/* Floating Cards - Mobile Optimized Positions */}
             <motion.div 
               style={{ translateZ: 50 }}
-              className="absolute top-0 left-10 glass p-5 rounded-3xl border-t border-l border-white/20 shadow-2xl shadow-purple-500/10 w-40 h-40 flex flex-col items-center justify-center gap-3 backdrop-blur-md"
+              className="absolute top-0 left-10 md:left-10 glass p-3 md:p-5 rounded-3xl border-t border-l border-white/20 shadow-2xl shadow-purple-500/10 w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center gap-2 md:gap-3 backdrop-blur-md"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="p-3 bg-purple-500/10 rounded-xl text-purple-400">
-                <Terminal size={32} />
+              <div className="p-2 md:p-3 bg-purple-500/10 rounded-xl text-purple-400">
+                <Terminal size={24} className="md:w-8 md:h-8" />
               </div>
-              <span className="font-bold text-white text-sm">Full Stack Dev</span>
+              <span className="font-bold text-white text-xs md:text-sm">Full Stack Dev</span>
             </motion.div>
 
             <motion.div 
               style={{ translateZ: 80 }}
-              className="absolute bottom-10 right-10 glass p-5 rounded-3xl border-t border-l border-white/20 shadow-2xl shadow-blue-500/10 w-44 h-44 flex flex-col items-center justify-center gap-3 backdrop-blur-md"
+              className="absolute bottom-10 right-10 md:right-10 glass p-3 md:p-5 rounded-3xl border-t border-l border-white/20 shadow-2xl shadow-blue-500/10 w-36 h-36 md:w-44 md:h-44 flex flex-col items-center justify-center gap-2 md:gap-3 backdrop-blur-md"
               animate={{ y: [0, 15, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             >
-              <div className="p-3 bg-blue-500/10 rounded-xl text-blue-400">
-                <Network size={36} />
+              <div className="p-2 md:p-3 bg-blue-500/10 rounded-xl text-blue-400">
+                <Network size={28} className="md:w-9 md:h-9" />
               </div>
-              <span className="font-bold text-white text-sm">Network Specialist</span>
+              <span className="font-bold text-white text-xs md:text-sm">Network Specialist</span>
             </motion.div>
 
             <motion.div 
               style={{ translateZ: 30 }}
-              className="absolute top-20 right-0 glass p-4 rounded-2xl border-t border-l border-white/20 w-36 flex items-center gap-3 backdrop-blur-md"
+              className="absolute top-20 right-0 glass p-2 md:p-4 rounded-2xl border-t border-l border-white/20 w-28 md:w-36 flex items-center gap-2 md:gap-3 backdrop-blur-md"
               animate={{ x: [0, 10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
             >
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs font-bold text-slate-300">System Secure</span>
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[10px] md:text-xs font-bold text-slate-300">System Secure</span>
             </motion.div>
 
             <motion.div 
               style={{ translateZ: 60 }}
-              className="absolute bottom-32 left-0 glass p-4 rounded-2xl border-t border-l border-white/20 w-32 flex flex-col items-center gap-1 backdrop-blur-md"
+              className="absolute bottom-32 left-0 glass p-2 md:p-4 rounded-2xl border-t border-l border-white/20 w-24 md:w-32 flex flex-col items-center gap-1 backdrop-blur-md"
               animate={{ x: [0, -10, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
             >
-              <span className="text-2xl font-bold text-white">99.9%</span>
-              <span className="text-[10px] text-slate-400 uppercase tracking-widest">Uptime</span>
+              <span className="text-lg md:text-2xl font-bold text-white">99.9%</span>
+              <span className="text-[8px] md:text-[10px] text-slate-400 uppercase tracking-widest">Uptime</span>
             </motion.div>
 
             {/* Connecting Lines (Decorative) */}

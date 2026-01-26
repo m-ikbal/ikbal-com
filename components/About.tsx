@@ -117,6 +117,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={item.featured ? { y: -6, scale: 1.02 } : { y: -5, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-slate-900/50 backdrop-blur-sm transition-all duration-300 ${item.colSpan} ${item.borderColor} ${item.shadow} hover:shadow-xl ${
                 item.featured
                   ? "ring-1 ring-pink-500/25 hover:ring-pink-400/50 hover:shadow-pink-500/20"
@@ -127,8 +128,8 @@ export default function About() {
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${item.color} ${
                   item.featured
-                    ? "opacity-40 group-hover:opacity-70"
-                    : "opacity-0 group-hover:opacity-100"
+                    ? "opacity-30 md:opacity-40 md:group-hover:opacity-70"
+                    : "opacity-20 md:opacity-0 md:group-hover:opacity-100"
                 } transition-opacity duration-500`}
               />
 

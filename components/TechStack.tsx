@@ -60,13 +60,14 @@ export default function TechStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              whileTap={{ scale: 0.98 }}
               className="group relative rounded-3xl"
             >
               {/* Animated Border Beam - Only visible on Hover */}
               <div className="absolute -inset-[2px] rounded-3xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
               
               <div 
-                className={`absolute -inset-[2px] rounded-3xl bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 animate-border-spin`} 
+                className={`absolute -inset-[2px] rounded-3xl bg-gradient-to-r ${category.color} opacity-20 md:opacity-0 md:group-hover:opacity-100 blur-md transition-opacity duration-500 animate-border-spin`} 
                 style={{ backgroundSize: '200% 200%' }}
               />
               
@@ -79,7 +80,7 @@ export default function TechStack() {
                     <div className={`p-3 rounded-xl ${category.iconBg} ${category.iconColor} group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-black/20`}>
                       <category.icon size={32} />
                     </div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-400 transition-all">
+                    <h3 className="text-xl font-bold transition-all text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 md:text-white md:bg-none md:group-hover:text-transparent md:group-hover:bg-gradient-to-r md:group-hover:from-white md:group-hover:to-slate-400">
                       {category.title}
                     </h3>
                   </div>

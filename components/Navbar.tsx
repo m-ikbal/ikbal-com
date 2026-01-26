@@ -42,10 +42,13 @@ export default function Navbar() {
               href={item.href}
               className="group flex flex-col items-center gap-1 text-sm text-slate-400 hover:text-white transition-colors"
             >
-              <div className="relative p-2 rounded-lg group-hover:bg-white/10 transition-colors">
+              <motion.div 
+                whileTap={{ scale: 0.9 }}
+                className="relative p-2 rounded-lg group-hover:bg-white/10 transition-colors"
+              >
                 <item.icon size={20} />
                 <span className="absolute inset-0 rounded-lg ring-1 ring-inset ring-white/20 scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all"></span>
-              </div>
+              </motion.div>
               <span className="hidden md:block text-[10px] font-medium opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 transition-all absolute -bottom-4 w-max">
                 {item.name}
               </span>
