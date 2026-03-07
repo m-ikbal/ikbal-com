@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Home, User, Code, Briefcase, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import clsx from 'clsx';
 
 const navItems = [
   { name: 'Home', href: '#home', icon: Home },
@@ -16,12 +15,22 @@ const navItems = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 60);
+
+      const sections = navItems.map((item) => item.href.slice(1));
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.getBoundingClientRect().top <= 200) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -29,32 +38,41 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={clsx(
-        "fixed top-4 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-full border border-white/10 transition-all duration-300",
-        scrolled ? "bg-slate-950/80 backdrop-blur-md shadow-lg shadow-purple-500/10" : "bg-transparent backdrop-blur-sm"
-      )}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`fixed top-4 inset-x-0 mx-auto w-fit z-50 px-1.5 sm:px-2 py-1.5 sm:py-2 rounded-full border transition-all duration-500 max-w-[calc(100vw-1.5rem)] ${
+        scrolled
+          ? 'border-purple-500/15 bg-[#080c20]/80 backdrop-blur-xl shadow-[0_0_30px_rgba(124,58,237,0.08)]'
+          : 'border-white/5 bg-transparent backdrop-blur-sm'
+      }`}
     >
-      <ul className="flex items-center gap-6">
-        {navItems.map((item) => (
-          <li key={item.name}>
-            <Link 
-              href={item.href}
-              className="group flex flex-col items-center gap-1 text-sm text-slate-400 hover:text-white transition-colors"
-            >
-              <motion.div 
-                whileTap={{ scale: 0.9 }}
-                className="relative p-2 rounded-lg group-hover:bg-white/10 transition-colors"
+      <ul className="flex items-center gap-0.5 sm:gap-1">
+        {navItems.map((item) => {
+          const isActive = activeSection === item.href.slice(1);
+          return (
+            <li key={item.name}>
+              <Link
+                href={item.href}
+                className={`group relative flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                  isActive
+                    ? 'text-white bg-purple-500/15'
+                    : 'text-white/40 hover:text-white/80 hover:bg-white/5'
+                }`}
               >
-                <item.icon size={20} />
-                <span className="absolute inset-0 rounded-lg ring-1 ring-inset ring-white/20 scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all"></span>
-              </motion.div>
-              <span className="hidden md:block text-[10px] font-medium opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 transition-all absolute -bottom-4 w-max">
-                {item.name}
-              </span>
-            </Link>
-          </li>
-        ))}
+                <item.icon size={15} className="sm:w-4 sm:h-4" />
+                <span className="hidden md:block text-xs tracking-wide">
+                  {item.name}
+                </span>
+                {isActive && (
+                  <motion.div
+                    layoutId="nav-indicator"
+                    className="absolute inset-0 rounded-full border border-purple-500/20"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </motion.nav>
   );

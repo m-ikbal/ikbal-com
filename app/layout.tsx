@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KAPTAN",
-  description: "kaptan",
+  title: "Muhammed İkbal Laç — Full Stack Engineer & Network Specialist",
+  description:
+    "Portfolio of Muhammed İkbal Laç — System architect, full stack engineer, and network security specialist.",
 };
 
 export default function RootLayout({
