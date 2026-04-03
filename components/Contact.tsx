@@ -19,7 +19,7 @@ const socialLinks = [
   {
     name: 'Email',
     icon: Mail,
-    href: 'mailto:contact@muhammedikballac@gmail.com',
+    href: 'mailto:muhammedikballac@gmail.com',
     hoverColor: 'hover:text-purple-400 hover:shadow-[0_0_20px_rgba(124,58,237,0.15)]',
   },
 ];
