@@ -1,4 +1,4 @@
-# ikbal.com
+# ikb4l.com
 
 Personal portfolio website built with a cosmic space theme, featuring smooth animations, glassmorphism UI, and a fully responsive design.
 
